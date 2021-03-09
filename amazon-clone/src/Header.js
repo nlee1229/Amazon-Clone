@@ -12,13 +12,16 @@ function Header() {
 
             <div className="header_nav">
                 <div className="header_option">
-
+                    <span className="header_optionLineOne">Hello, Sign in</span>
+                    <span className="header_optionLineTwp">Accounts & Lists</span>
                 </div>
                 <div className="header_option">
-                    
+                    <span className="header_optionLineOne">Returns</span>
+                    <span className="header_optionLineTwp">& Orders</span>
                 </div>
                 <div className="header_option">
-                    
+                    <span className="header_optionLineOne">Your</span>
+                    <span className="header_optionLineTwp">Prime</span>
                 </div>
             </div>
         </div>
