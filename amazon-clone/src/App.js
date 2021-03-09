@@ -5,6 +5,10 @@ function App() {
   return (
     <div className="app">
       <h1>Hello all!</h1>
+      {/* Header */}
+      {/* Home component */}
+      
+
     </div>
   );
 }
