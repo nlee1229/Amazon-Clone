@@ -1,5 +1,6 @@
 export const initialState = {
     cart: [],
+    user: null
 };
 
 // Selector
@@ -33,6 +34,12 @@ const reducer = (state, action) => {
                 ...state,
                 cart: newCart
             }
+
+            case 'SET_USER':
+                return {
+                    ...state, // get all users
+                    user: action.user // update the user dispatched in App.js line 22
+                }
 
             default: 
                 return state;

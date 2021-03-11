@@ -13,6 +13,12 @@ function Login() {
     const signIn = e => {
         e.preventDefault();
         // Firebase login
+        auth 
+            .signInWithEmailAndPassword(email, password)
+            .then(auth => {
+                history.push("/")
+            })
+            .catch(error => alert(error.message));
     }
 
     const register = e => {
@@ -20,7 +26,7 @@ function Login() {
         // Firebase register
         auth.createUserWithEmailAndPassword(email, password)
         .then((auth) => {
-            // It successfully created a new user
+            // It successfully created a new user with email and password
             console.log(auth);
             if (auth) {
                 history.push("/") // Redirect if there authentication exists
@@ -68,3 +74,4 @@ function Login() {
 }
 
 export default Login;
+
