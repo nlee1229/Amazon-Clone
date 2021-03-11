@@ -3,6 +3,12 @@ import "./Product.css";
 
 
 function Product({id, title, image, price, rating}) {
+    const addToCart = () => {
+        // dispatch the item into the data layer
+    }
+
+
+
     return (
         <div className="product">
             <div className="product_info">
@@ -22,7 +28,7 @@ function Product({id, title, image, price, rating}) {
                 src={image}
                 alt=""
             />
-            <button>Add to Cart</button>
+            <button onClick={addToCart}>Add to Cart</button>
             </div>
     );
 }
