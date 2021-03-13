@@ -7,6 +7,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import CurrencyFormat from "react-currency-format";
 import { getCartTotal } from "./Reducer";
 import axios from "./axios";
+import { db } from "./firebase";
 
 function Payment() {
     const [{cart, user}, dispatch] = useStateValue();
@@ -48,9 +49,25 @@ function Payment() {
             }
         }).then(({ paymentIntent }) => {
             // paymentIntent is basically payment confirmation
+
+            db // using a noSQL data structure
+            .collection("users") // going into the users collection
+            .doc(user?.uid) // going into a specific user
+            .collection("orders") // going into that user's orders
+            .doc(paymentIntent.id) // going to create a document with id
+            .set({ // add all information in below 
+                cart: cart,
+                amount: paymentIntent.amount,
+                created: paymentIntent.created
+            })
+
             setSucceeded(true);
             setError(null);
             setProcessing(false);
+
+            dispatch({
+                type: 'EMPTY_CART'
+            })
 
             history.replace("/orders") // after placing an order, we will send users to the order page
         })
