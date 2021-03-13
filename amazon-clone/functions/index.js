@@ -12,7 +12,8 @@ const app = express();
 app.use(cors({origin: true}));
 app.use(express.json());
 // API routes
-app.get("/", (request, response) => response.status(200).send("Hello there"))
+app.get("/", (request, response) => response.status(200).send("Hello there"));
+
 app.post("/payments/create", async (request, response) => {
     const total = request.query.total;
 
@@ -23,10 +24,11 @@ app.post("/payments/create", async (request, response) => {
         currency: "usd",
     });
 
+    // OK-Created
     response.status(201).send({
         clientSecret: paymentIntent.client_secret,
-    })
-})
+    });
+});
 
 // Listen command
-exports.api = functions.https.onRequest(app)
+exports.api = functions.https.onRequest(app);
