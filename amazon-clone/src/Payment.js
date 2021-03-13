@@ -35,6 +35,8 @@ function Payment() {
         getClientSecret();
     }, [cart])
 
+    console.log("THE SECRET IS >>>", clientSecret);
+
     const handleSubmit = async (event) => {
         // all stripe things
         event.preventDefault(); // will stop it from refreshing
